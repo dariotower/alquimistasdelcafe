@@ -1,0 +1,122 @@
+[
+  [
+    "departamento",
+    "¿En qué departamento de Mendoza desarrollás tu actividad?",
+    [
+      "Capital",
+      "Godoy Cruz",
+      "Guaymallén",
+      "Las Heras",
+      "Luján de Cuyo",
+      "Maipú",
+      "Lavalle",
+      "San Martín",
+      "Junín",
+      "Rivadavia",
+      "Santa Rosa",
+      "La Paz",
+      "Tunuyán",
+      "Tupungato",
+      "San Carlos",
+      "San Rafael",
+      "General Alvear",
+      "Malargüe",
+      "Fuera de Mendoza"
+    ],
+    true
+  ],
+  [
+    "edad",
+    "¿En qué rango de edad estás?",
+    [
+      "Menos de 18",
+      "18 a 24",
+      "25 a 34",
+      "35 a 44",
+      "45 a 54",
+      "55 o más",
+      "Prefiero no responder"
+    ],
+    false
+  ],
+  [
+    "genero",
+    "¿Cómo describís tu género?",
+    null,
+    false
+  ],
+  [
+    "tareas",
+    "¿Qué tareas realizás o realizaste en el mundo del café?",
+    null,
+    true
+  ],
+  [
+    "vinculo",
+    "¿Cuál es tu vínculo actual con el café?",
+    [
+      "Trabajo en relación de dependencia",
+      "Trabajo por mi cuenta",
+      "Combino ambas modalidades",
+      "Busco trabajo en el sector",
+      "Estoy en formación",
+      "Trabajé antes en el sector",
+      "Otro"
+    ],
+    true
+  ],
+  [
+    "experiencia",
+    "¿Cuánto tiempo de experiencia tenés en el sector?",
+    [
+      "Todavía no trabajé en el sector",
+      "Menos de 1 año",
+      "1 a 3 años",
+      "4 a 6 años",
+      "7 años o más"
+    ],
+    true
+  ],
+  [
+    "formacion",
+    "¿Cómo aprendiste lo que sabés de café?",
+    null,
+    true
+  ],
+  [
+    "necesidades",
+    "¿Qué te gustaría aprender o profundizar para seguir desarrollándote en el mundo del café?",
+    null,
+    false
+  ],
+  [
+    "barreras",
+    "¿Qué te dificulta acceder a formación o seguir desarrollándote?",
+    null,
+    false
+  ],
+  [
+    "oportunidades",
+    "¿Sentís que tenés las mismas oportunidades de desarrollo que otras personas del sector?",
+    [
+      "Sí",
+      "En parte",
+      "No",
+      "No sé",
+      "Prefiero no responder"
+    ],
+    false
+  ],
+  [
+    "mejoras",
+    "¿Qué cambios ayudarían a mejorar tu experiencia de trabajo en el café?",
+    null,
+    false
+  ],
+  [
+    "historia",
+    "¿Hay algo de tu recorrido que te gustaría compartir?",
+    null,
+    false
+  ]
+]
