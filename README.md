@@ -12,7 +12,7 @@ Estado: no activada; requiere desplegar el receptor y configurar su URL.
 6. Abrí el sitio sin iniciar sesión. Enviá una respuesta de prueba y verificá que aparezca exactamente una fila. Reintentá el mismo envío: no debe duplicarse. Eliminá solamente esa fila de prueba antes de difundir.
 
 ## Qué incluye
-12 preguntas sobre territorio, trayectorias, formación y oportunidades; contacto opcional y autorizaciones separadas. Sin anuncio del curso de tueste. Los campos de género, edad y experiencias personales son opcionales. No se afirma que sea el primer relevamiento de la provincia.
+Formulario adaptativo en tres pasos: vínculo y formación; experiencia y barreras; necesidades y datos opcionales. Cuatro perfiles según vínculo con el sector, con registro laboral solo para empleo dependiente. Las preguntas de trabajo se omiten para quienes empiezan. Contacto solo para entrevistas. Sin anuncio del curso de tueste. Los campos de género, edad y experiencias personales son opcionales. No se afirma que sea el primer relevamiento de la provincia.
 
 Paleta basada en el manual: crema, marrón y terracota. Tipografía Alegreya Sans si está instalada, con Arial como respaldo. No incluye archivos de fuentes.
 
@@ -26,3 +26,11 @@ Revisar textos con Maru y Adri; acordar quién accede, plazo de conservación y 
 
 ## Verificación
 Sintaxis y validaciones probadas localmente. Pendiente: prueba real de publicación, permisos, envío anónimo y guardado en Sheets. No se ha desplegado ni creado la Sheet desde este paquete.
+
+
+## Actualización v2
+Subir también app.js y logic.js a la raíz del sitio. Cuando config.js no tiene URL, se puede completar una prueba, claramente identificada, sin guardar ni enviar datos.
+
+Reemplazar Code.gs en Apps Script, ejecutar setup y actualizar la implementación con una nueva versión. Crea la pestaña Respuestas_v2 dentro de la misma planilla si ya existía SHEET_ID, conservando las respuestas anteriores. No mezclar encabezados de v1 con v2. El endpoint aún no está configurado en el repositorio.
+
+Validaciones compartidas entre cliente y servidor. Pruebas locales cubren cuatro perfiles, cambios de modalidad, exclusiones, campos requeridos y validación del receptor. Pendiente prueba visual en navegador y prueba real con Google Sheets.
