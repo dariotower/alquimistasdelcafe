@@ -12,10 +12,10 @@ function normalize(p){
  return out;
 }
 
-const HEADERS=['Fecha','ID',...SCHEMA.map(q=>q.key),'email','entrevistas','consentimiento','Version'];
+const HEADERS=['Fecha','ID',...SCHEMA.map(q=>q.key),'email','novedades','consentimiento','Version'];
 function sheet_(ss){
- let sh=ss.getSheetByName('Respuestas_v2');
- if(!sh){sh=ss.insertSheet('Respuestas_v2');sh.appendRow(HEADERS);sh.setFrozenRows(1);}
+ let sh=ss.getSheetByName('Respuestas_v3');
+ if(!sh){sh=ss.insertSheet('Respuestas_v3');sh.appendRow(HEADERS);sh.setFrozenRows(1);}
  const actual=sh.getRange(1,1,1,HEADERS.length).getValues()[0];
  if(JSON.stringify(actual)!==JSON.stringify(HEADERS))throw Error('La estructura de la planilla requiere revisión.');
  return sh;
@@ -29,18 +29,18 @@ function doGet(){return page_('Detrás de cada taza','Receptor del relevamiento 
 function doPost(e){let lock;try{
  if(!e||!e.parameter||!e.postData||e.postData.length>30000)throw Error('Envío no válido.');
  const p=e.parameter;
- if(p.version!=='v2')throw Error('Actualizá el formulario antes de enviar.');
+ if(p.version!=='v3')throw Error('Actualizá el formulario antes de enviar.');
  if(p.website||p.consentimiento!=='si')throw Error('Revisá el consentimiento.');
  if(!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(p.submission_id||''))throw Error('Identificador no válido.');
  const raw={...p};for(const q of SCHEMA)if(q.kind==='multi')raw[q.key]=(e.parameters||{})[q.key]||[];
  const answers=normalize(raw);
- if(p.entrevistas&&p.entrevistas!=='si')throw Error('Opción no válida.');
- const email=p.entrevistas==='si'?(p.email||''):'';
- if(p.entrevistas==='si'&&(email.length>254||! /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)))throw Error('Revisá tu correo.');
+ if(p.novedades&&p.novedades!=='si')throw Error('Opción no válida.');
+ const email=p.novedades==='si'?(p.email||''):'';
+ if(p.novedades==='si'&&(email.length>254||! /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)))throw Error('Revisá tu correo.');
  const id=PropertiesService.getScriptProperties().getProperty('SHEET_ID');if(!id)throw Error('Relevamiento todavía no habilitado.');
  lock=LockService.getScriptLock();lock.waitLock(15000);const sh=sheet_(SpreadsheetApp.openById(id));
  const exists=sh.getLastRow()>1&&sh.getRange(2,2,sh.getLastRow()-1,1).createTextFinder(p.submission_id).matchEntireCell(true).findNext();
- if(!exists){const safe=v=>/^[\s]*[=+@-]/.test(v)?"'"+v:v;sh.appendRow([new Date(),p.submission_id,...SCHEMA.map(q=>safe(answers[q.key]||'')),safe(email),p.entrevistas||'',p.consentimiento,'v2']);SpreadsheetApp.flush();}
+ if(!exists){const safe=v=>/^[\s]*[=+@-]/.test(v)?"'"+v:v;sh.appendRow([new Date(),p.submission_id,...SCHEMA.map(q=>safe(answers[q.key]||'')),safe(email),p.novedades||'',p.consentimiento,'v3']);SpreadsheetApp.flush();}
  return page_('¡Gracias por compartir tu recorrido!','Tu respuesta quedó guardada. Ya podés cerrar esta página.');
  }catch(err){return page_('No pudimos registrar tu respuesta','Volvé atrás y revisá tus respuestas. '+err.message);}finally{if(lock&&lock.hasLock())lock.releaseLock();}}
 function page_(title,message){
